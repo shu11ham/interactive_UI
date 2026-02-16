@@ -19,7 +19,7 @@ pipeline {
         stage('Stop Old Containers') {
             steps {
                 sh '''
-                docker compose down --volumes || true
+                docker-compose down --volumes || true
                 '''
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                docker compose build
+                docker-compose build
                 '''
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Start Containers') {
             steps {
                 sh '''
-                docker compose up -d
+                docker-compose up -d
                 '''
             }
         }
